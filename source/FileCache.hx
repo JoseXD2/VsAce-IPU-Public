@@ -42,12 +42,6 @@ class FileCache
 	{
 		for (i in list.filter(text -> text.contains("assets/songs")))
 		{
-			var daFolder:String = folder.replace('assets/songs', '');
-			if (daFolder.contains('/'))
-				daFolder = daFolder.replace(daFolder.substring(daFolder.indexOf('/'), daFolder.length), ''); // fancy
-
-			if (!daFolder.startsWith('.') && !libraryArray.contains(daFolder))
-				libraryArray.push(daFolder);
 			
 			if(StringTools.endsWith(i, "txt")) continue;
 
@@ -57,12 +51,7 @@ class FileCache
 		for (i in list.filter(text -> text.contains("assets/shared/sounds")))
 		{
 			
-			var daFolder:String = folder.replace('assets/shared/sounds/', '');
-			if (daFolder.contains('/'))
-				daFolder = daFolder.replace(daFolder.substring(daFolder.indexOf('/'), daFolder.length), ''); // fancy
-
-			if (!daFolder.startsWith('.') && !libraryArray.contains(daFolder))
-				libraryArray.push(daFolder);
+			
 			
 			if(StringTools.endsWith(i, ".ogg")) {
 				if(blacklistSounds.contains(i)) continue;
