@@ -180,7 +180,7 @@ class ResultsScreen extends FlxSubState
 		var androidback = false;
 		#end
 			
-		if (controls.ACCEPT || androidback)
+		if (PlayerSettings.player1.controls.ACCEPT || androidback)
 		{
 			music.fadeOut(0.3);
 
