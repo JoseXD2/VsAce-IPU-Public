@@ -25,7 +25,7 @@ class OptionsMenu extends MusicBeatState
 
 	var options:Array<OptionCategory> = [
 		new OptionCategory("Gameplay", [
-			new AndroidControls(),
+			
 			new IceNotesOption("Toggle ice notes on certain songs. Turn off for classic gameplay."),
 			new DFJKOption(controls),
 			new DownscrollOption("Put your lane in the center or on the right."),
