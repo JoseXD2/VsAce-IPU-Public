@@ -162,9 +162,7 @@ class ResultsScreen extends FlxSubState
 
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
 
-		#if android
-addVirtualPad(NONE, A);
-#end
+		
 	
 		super.create();
 	}
@@ -176,7 +174,13 @@ addVirtualPad(NONE, A);
 
 		// keybinds
 
-		if (PlayerSettings.player1.controls.ACCEPT)
+		#if android
+		var androidback = FlxG.android.justReleased.BACK;
+		#else
+		var androidback = false;
+		#end
+			
+		if (controls.ACCEPT || androidback)
 		{
 			music.fadeOut(0.3);
 
