@@ -25,6 +25,10 @@ class FileCache
 		"SNAP.ogg"
 	];
 
+	public static function dashToSpace(string:String):String
+	{
+		return string.replace("-", " ");
+	}
 	public static function swapSpaceDash(string:String):String
 	{
 		return StringTools.contains(string, '-') ? dashToSpace(string) : spaceToDash(string);
