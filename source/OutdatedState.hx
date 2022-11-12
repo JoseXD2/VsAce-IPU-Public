@@ -21,7 +21,7 @@ import openfl.display.BitmapData;
 import flash.media.Sound;
 import lime.media.AudioBuffer;
 import haxe.io.Bytes;
-
+import openfl.utils.Assets;
 import hscript.Parser;
 import hscript.Interp;
 
