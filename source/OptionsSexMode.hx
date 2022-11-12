@@ -25,6 +25,7 @@ class OptionsMenu extends MusicBeatState
 
 	var options:Array<OptionCategory> = [
 		new OptionCategory("Gameplay", [
+			new AndroidControls(),
 			new IceNotesOption("Toggle ice notes on certain songs. Turn off for classic gameplay."),
 			new DFJKOption(controls),
 			new DownscrollOption("Put your lane in the center or on the right."),
@@ -66,7 +67,9 @@ class OptionsMenu extends MusicBeatState
 		]),
 
 		new OptionCategory("Saves and Data", [
+			#if desktop
 			new ReplayOption("View saved song replays."),
+			#end
 			new ResetScoreOption("Reset your score on all songs and weeks. This is irreversible!"),
 			new LockWeeksOption("Reset your story mode progress. This is irreversible!"),
 			new ResetSettings("Reset ALL your settings. This is irreversible!")
@@ -122,6 +125,10 @@ class OptionsMenu extends MusicBeatState
 		FlxTween.tween(versionShit,{y: FlxG.height - 18},2,{ease: FlxEase.elasticInOut});
 		FlxTween.tween(blackBorder,{y: FlxG.height - 18},2, {ease: FlxEase.elasticInOut});
 
+		#if android
+		addVirtualPad(FULL, A_B);
+		#end
+			
 		super.create();
 	}
 
