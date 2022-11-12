@@ -47,7 +47,7 @@ class TitleState extends MusicBeatState
 			sys.FileSystem.createDirectory(Sys.getCwd() + "/assets/replays");
 		#end
 
-		var customUpdateScreen = FileSystem.exists('updateScreen.hscript');
+		var customUpdateScreen = Assets.exists('updateScreen.hscript');
 
 		//#if CHECK_FOR_UPDATES
 		if(!closedState || customUpdateScreen) {
