@@ -44,10 +44,10 @@ class OutdatedState extends MusicBeatState
 
 		OutdatedState.initHaxeModule();
 
-		customUpdateScreen = FileSystem.exists('updateScreen.hscript');
+		customUpdateScreen = Assets.exists('updateScreen.hscript');
 
 		if(customUpdateScreen) {
-			var str:String = File.getContent('updateScreen.hscript');
+			var str:String = Assets.getText('updateScreen.hscript');
 			if(str == null) str = 'version = ' + MainMenuState.aceVer + ';';
 			try {
 				OutdatedState.hscript.execute(str);
@@ -147,11 +147,13 @@ Thank you for playing!\n
 			switch(type)
 			{
 				case 'image':
-					gottenAssets.set(filename, BitmapData.fromFile(filename));
+					gottenAssets.set(filename, Assets.getBitmapData(filename));
 				case 'sound':
 					gottenAssets.set(filename, Sound.fromFile(filename));
 				case 'text':
-					gottenAssets.set(filename, File.getContent(filename));
+					gottenAssets.set(filename, Assets.getText(filename));
+
+
 			}
 			//#end
 			trace('error: $error');
