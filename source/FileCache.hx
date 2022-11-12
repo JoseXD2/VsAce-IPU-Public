@@ -25,6 +25,11 @@ class FileCache
 		"SNAP.ogg"
 	];
 
+	public static function swapSpaceDash(string:String):String
+	{
+		return StringTools.contains(string, '-') ? dashToSpace(string) : spaceToDash(string);
+	}
+	
 	public var sharedSprites:Map<String, String> = new Map<String, String>();
 	public var wrathSprites:Map<String, String> = new Map<String, String>();
 
