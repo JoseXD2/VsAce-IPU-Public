@@ -9,7 +9,9 @@ import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
 import haxe.xml.Access;
 import lime.utils.Assets;
-
+#if sys
+import sys.FileSystem;
+#end
 class FileCache
 {
 	public static var instance:FileCache;
@@ -25,14 +27,6 @@ class FileCache
 		"SNAP.ogg"
 	];
 
-	public static function dashToSpace(string:String):String
-	{
-		return string.replace("-", " ");
-	}
-	public static function swapSpaceDash(string:String):String
-	{
-		return StringTools.contains(string, '-') ? dashToSpace(string) : spaceToDash(string);
-	}
 	
 	public var sharedSprites:Map<String, String> = new Map<String, String>();
 	public var wrathSprites:Map<String, String> = new Map<String, String>();
@@ -44,12 +38,12 @@ class FileCache
 	public var progress:Float = 0;
 	var imageProgress:Float = 0;
 	public var loaded = false;
-	var list = Assets.list();
+	
 	public var loadedImages = false;
 
 	function new()
 	{
-		for (i in list.filter(text -> text.contains("assets/songs")))
+		for (i in FileSystem.readDirectory(FileSystem.absolutePath("assets/songs")))
 		{
 			
 			if(StringTools.endsWith(i, "txt")) continue;
@@ -57,7 +51,7 @@ class FileCache
 			music.push(i);
 		}
 
-		for (i in list.filter(text -> text.contains("assets/shared/sounds")))
+		for (i in FileSystem.readDirectory(FileSystem.absolutePath("assets/shared/sounds")))
 		{
 			
 			
@@ -68,7 +62,6 @@ class FileCache
 			}
 		}
 	}
-
 	public static function loadFiles()
 	{
 		instance = new FileCache();
