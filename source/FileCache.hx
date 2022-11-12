@@ -10,9 +10,6 @@ import flixel.math.FlxRect;
 import haxe.xml.Access;
 import lime.utils.Assets;
 
-#if cpp
-import sys.FileSystem;
-#end
 class FileCache
 {
 	public static var instance:FileCache;
@@ -38,18 +35,19 @@ class FileCache
 	public var progress:Float = 0;
 	var imageProgress:Float = 0;
 	public var loaded = false;
+	var list = Assets.list();
 	public var loadedImages = false;
 
 	function new()
 	{
-		for (i in FileSystem.readDirectory(FileSystem.absolutePath("assets/songs")))
+		for (i in list.filter(text -> text.contains("assets/songs")))
 		{
 			if(StringTools.endsWith(i, "txt")) continue;
 
 			music.push(i);
 		}
 
-		for (i in FileSystem.readDirectory(FileSystem.absolutePath("assets/shared/sounds")))
+		for (i in list.filter(text -> text.contains("assets/shared/sounds")))
 		{
 			if(StringTools.endsWith(i, ".ogg")) {
 				if(blacklistSounds.contains(i)) continue;
