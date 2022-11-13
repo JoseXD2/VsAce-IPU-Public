@@ -32,17 +32,17 @@ class Init extends MusicBeatState {
 		var args = [for (arg in Sys.args()) if (arg.startsWith("/")) '-${arg.substr(1)}' else arg];
 
 		if(args.contains("-askcache")) {
-			initialState = TitleState;
+			initialState = CachingQuestion;
 		}
 
 		if(FlxG.save.data.askedCache == null || FlxG.save.data.askedCache == false) {
-			initialState = TitleState;
+			initialState = CachingQuestion;
 		}
 
 		trace(args);
 		trace(totalRam);
 
-		if(initialState == TitleState) {
+		if(initialState == CachingQuestion) {
 			FileCache.loadNoFiles();
 		}
 		FlxG.switchState(cast Type.createInstance(initialState, []));
