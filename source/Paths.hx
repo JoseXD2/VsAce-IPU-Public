@@ -131,23 +131,19 @@ class Paths
 	inline static public function getSparrowAtlas(key:String, ?library:String, ?isCharacter:Bool = false)
 	{
 		if (isCharacter) {
-			#if cpp 
-			var usecahce = FlxG.save.data.cacheImages;
-
-			if(!FileCache.instance.cachedGraphics.exists(key)) {
-				usecahce = false;
+			
 			}
 
 			if (usecahce)
 				return FlxAtlasFrames.fromSparrow(imageCached(key), file('images/characters/$key.xml', library));
 			else
-			#end
+			
 				return FlxAtlasFrames.fromSparrow(image('characters/$key', library), file('images/characters/$key.xml', library));
 		}
 		return FlxAtlasFrames.fromSparrow(image(key, library), file('images/$key.xml', library));
 	}
 
-	#if cpp 
+	#if windows 
 	inline static public function imageCached(key:String):FlxGraphic
 	{
 		var data = FileCache.instance.cachedGraphics.get(key);
