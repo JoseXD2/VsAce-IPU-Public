@@ -42,7 +42,7 @@ class Init extends MusicBeatState {
 		trace(args);
 		trace(totalRam);
 
-		if(initialState == CachingQuestion) {
+		if(initialState == TitleState) {
 			FileCache.loadNoFiles();
 		}
 		FlxG.switchState(cast Type.createInstance(initialState, []));
