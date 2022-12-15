@@ -143,11 +143,11 @@ class Paths
 		return FlxAtlasFrames.fromSparrow(image(key, library), file('images/$key.xml', library));
 	}
 
-	#if windows 
+	
 	inline static public function imageCached(key:String):FlxGraphic
 	{
 		var data = FileCache.instance.cachedGraphics.get(key);
 		return data;
 	}
-	#end
+	
 }
