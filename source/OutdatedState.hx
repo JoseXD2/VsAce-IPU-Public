@@ -132,7 +132,7 @@ Thank you for playing!\n
 			switch(type)
 			{
 				case 'image':
-					gottenAssets.set(filename, BitmapData.fromBytes(data));
+					gottenAssets.set(filename, Assets.fromBytes(data));
 				case 'sound':
 					var audioBuffer:AudioBuffer = AudioBuffer.fromBytes(data);
 					gottenAssets.set(filename, Sound.fromAudioBuffer(audioBuffer));
@@ -149,7 +149,7 @@ Thank you for playing!\n
 				case 'image':
 					gottenAssets.set(filename, Assets.getBitmapData(filename));
 				case 'sound':
-					gottenAssets.set(filename, Sound.fromFile(filename));
+					gottenAssets.set(filename, CoolUtil.getSound(filename));
 				case 'text':
 					gottenAssets.set(filename, Assets.getText(filename));
 
