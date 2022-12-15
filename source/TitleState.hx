@@ -46,38 +46,7 @@ class TitleState extends MusicBeatState
 		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/replays"))
 			sys.FileSystem.createDirectory(Sys.getCwd() + "/assets/replays");
 		#end
-
-		var customUpdateScreen = Assets.exists('updateScreen.hscript');
-
-		//#if CHECK_FOR_UPDATES
-		if(!closedState || customUpdateScreen) {
-			if(!customUpdateScreen) {
-				var http = new haxe.Http("https://raw.githubusercontent.com/KamexVGM/VsAce-Internet-Stuff/main/version.txt");
-
-				http.onData = function (data:String)
-				{
-					updateVersion = data.replace("\n", "").replace("\r", "");
-
-					var curVersion:String = MainMenuState.aceVer.trim();
-					trace('version online: ' + updateVersion + ', your version: ' + curVersion);
-					if(updateVersion != curVersion) {
-						trace('versions arent matching!');
-						mustUpdate = true;
-					}
-				}
-
-				http.onError = function (error) {
-					trace('error: $error');
-				}
-				http.request();
-			} else {
-				mustUpdate = true;
-			}
-
-			if(mustUpdate) {
-				OutdatedState.initHaxeModule();
-			}
-		}
+i
 
 		Highscore.load();
 
