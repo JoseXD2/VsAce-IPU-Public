@@ -43,7 +43,7 @@ class FileCache
 
 	function new()
 	{
-		for (i in FileSystem.readDirectory(FileSystem.absolutePath("assets/songs")))
+		for (i in HSys.readDirectory("assets/songs"))
 		{
 			
 			if(StringTools.endsWith(i, "txt")) continue;
@@ -51,7 +51,7 @@ class FileCache
 			music.push(i);
 		}
 
-		for (i in FileSystem.readDirectory(FileSystem.absolutePath("assets/shared/sounds")))
+		for (i in HSys.readDirectory("assets/shared/sounds"))
 		{
 			
 			
