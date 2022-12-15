@@ -46,7 +46,7 @@ class TitleState extends MusicBeatState
 		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/replays"))
 			sys.FileSystem.createDirectory(Sys.getCwd() + "/assets/replays");
 		#end
-i
+
 
 		Highscore.load();
 
