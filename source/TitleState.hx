@@ -15,6 +15,8 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import openfl.Assets;
+import lime.system.System;
+
 #if sys
 import sys.FileSystem;
 import sys.io.File;
@@ -36,15 +38,16 @@ class TitleState extends MusicBeatState
 	var mustUpdate:Bool = false;
 	public static var closedState:Bool = false;
 
+	public static var path:String = System.applicationStorageDirectory;
 	override public function create():Void
 	{
 		#if android
 		FlxG.android.preventDefaultKeys = [BACK];
 		#end
 		
-		#if windows 
-		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/replays"))
-			sys.FileSystem.createDirectory(Sys.getCwd() + "/assets/replays");
+		#if sys 
+		if (!sys.FileSystem.exists(lime.system.System.applicationStorageDirectory + "/assets/replays"))
+			sys.FileSystem.createDirectory(lime.system.System.applicationStorageDirectory + "/assets/replays");
 		#end
 
 
